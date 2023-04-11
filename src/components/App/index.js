@@ -1,14 +1,22 @@
 import { Routes, Route } from 'react-router-dom'; 
-import Menu from '../Menu';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import './style.css';
+import Menu from '../Menu';
+import Home from '../Home';
+import Recipe from '../Recipe';
+
+import './style.scss';
+import useScrollTop from '../../hooks/useScrollTop';
 
 function App() {
+  useScrollTop();
   return (
     <div className="app">
       <Menu />
       <Routes>
-        {/* <Route path='/' element={<Home />} /> */}
+        <Route path='/' element={<Home />} />
+        <Route path="/recipe/:slug" element={<Recipe />} />
       </Routes>
     </div>
   );

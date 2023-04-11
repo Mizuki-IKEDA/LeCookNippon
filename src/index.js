@@ -6,9 +6,11 @@ import App from './components/App';
 import store from './store';
 
 const rootReactElement = (
+  <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
+  </Provider>
 );
 
 const root = createRoot(document.getElementById('root'));
