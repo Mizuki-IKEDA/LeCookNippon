@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Menu from '../Menu';
 import Home from '../Home';
 import Recipe from '../Recipe';
+import Error from '../Error';
 
 import './style.scss';
 import useScrollTop from '../../hooks/useScrollTop';
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path="/recipe/:slug" element={<Recipe />} />
+        <Route path="/error" element={<Error />} />
       </Routes>
     </div>
   );
