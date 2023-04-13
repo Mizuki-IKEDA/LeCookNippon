@@ -19,7 +19,7 @@ import './style.scss';
 // == Composant
 function Recipe() {
   const { slug } = useParams();
-  const recipe = useSelector((state) => findRecipe(state.recipes.list, slug));
+  const recipe = useSelector((state) => findRecipe(state.recipes.recipes, slug));
 
   if (!recipe) {
     return <Navigate to="/error" replace />;
