@@ -1,22 +1,47 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import data from '../../data';
+import axios from 'axios';
 
 const initialState = {
-  recipes: data,
-  loading: true,
+  recipes: [],
+  status: 'idle',
+  error: null,
 }
 
-export const recipeSlice = createSlice({
+export const fetchRecipes = createAsyncThunk(
+  'recipes/fetchRecipes',
+  async() => {
+    try{
+      const response = await axios.get(
+        "http://localhost:3001/recipes"
+      );
+      return [...response.data];
+    }catch(err){
+      console.log(err);
+    }
+  }
+);
+
+const recipeSlice = createSlice({
   name: 'recipes',
   initialState,
-  reducers: {
-    getrecipes: (state) => {
-        state.recipes = data;
-    }
-    }
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchRecipes.pending, (state, action) => {
+        state.status = 'loading'
+      })
+      .addCase(fetchRecipes.fulfilled, (state, action) => {
+        state.recipes = action.payload;
+      })
+      .addCase(fetchRecipes.rejected, (state, action) => {
+        state.status = 'failed'
+        state.error = action.error.message
+      })
+  }
 })
 
-// Action creators are generated for each case reducer function
-export const { getrecipes } = recipeSlice.actions;
+export const selectRecipes = state => state.recipes.recipes;
+export const getRecipesStatus = state => state.recipes.status;
+export const getRecipesError = state => state.recipes.error;
 
 export default recipeSlice.reducer;

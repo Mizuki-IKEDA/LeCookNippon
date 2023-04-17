@@ -15,13 +15,13 @@ export function getTextByRecipesNumber(recipes = []) {
 let text;
 switch (recipes.length) {
     case 0:
-    text = 'Découvrez prochainement nos recettes !';
+    text = 'Discover our recipes soon !';
     break;
     case 1:
-    text = 'Dégustez notre recette la plus savoureuse.';
+    text = 'Try our most delicious recipe.';
     break;
     default:
-    text = 'Choisissez parmi nos recettes ce qui vous fait envie.';
+    text = 'Choose a recipe from our selection. ';
     break;
 }
 return text;
