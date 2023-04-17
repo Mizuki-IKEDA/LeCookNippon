@@ -7,7 +7,6 @@ function AppHeader() {
     <header className="header">
       <img src={logo} className="header-logo" alt="Logo oRecipes" />
       {/* <LoginForm /> */}
-      <h1>Hello</h1>
     </header>
   );
 }

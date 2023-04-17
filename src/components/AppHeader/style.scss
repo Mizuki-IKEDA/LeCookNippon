@@ -10,5 +10,9 @@
 
   &-logo {
     width: 50px;
+    filter: invert(92%) sepia(0%) saturate(30%) hue-rotate(130deg) brightness(106%) contrast(106%);
+    background-color: #6303ff;
+    border-radius: 10px;
+    padding: 5px;
   }
 }
