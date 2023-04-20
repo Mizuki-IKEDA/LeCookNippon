@@ -19,8 +19,7 @@ function Home() {
         dispatch(fetchRecipes())
       }
     }, [recipesStatus, dispatch]);
-    
-    console.log(recipes);
+  
     return (
         <Page>
             <AppHeader />

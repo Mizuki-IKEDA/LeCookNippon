@@ -11,7 +11,8 @@ const initialState = {
 export const userSlice = createSlice({
   name: 'users',
   initialState,
-  reducers: {}
+  reducers: {},
+  extraReducers: {},
 })
 
 // Action creators are generated for each case reducer function
