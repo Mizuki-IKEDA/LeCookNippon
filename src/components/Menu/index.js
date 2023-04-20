@@ -1,13 +1,15 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import './style.scss';
 
 import data from '../../data';
+import { selectRecipes } from '../../redux/reducer/recipeReducer';
 
 function Menu() {
     // const isLogged = useSelector((state) => state.user.logged);
     const checkIsActive = ({ isActive }) => isActive ? 'menu-link menu-link--active' : 'menu-link';
-    const recipes = data;
+    const recipes = useSelector(selectRecipes);
+    
     return (
     <nav className="menu" >
         <NavLink
