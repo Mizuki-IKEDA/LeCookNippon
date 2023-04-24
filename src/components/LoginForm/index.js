@@ -7,9 +7,9 @@ import './style.scss';
 function LoginForm() {
   const dispatch = useDispatch();
 
-  const isLogged = useSelector((state) => state.user.logged);
-  const pseudo = useSelector((state) => state.user.pseudo);
-  const loading = useSelector((state) => state.user.loading);
+  const isLogged = useSelector((state) => state.users.logged);
+  const pseudo = useSelector((state) => state.users.pseudo);
+  const loading = useSelector((state) => state.users.loading);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
