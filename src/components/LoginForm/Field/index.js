@@ -11,7 +11,7 @@ function Field({
   name,
   placeholder,
 }) {
-  const value = useSelector((state) => state.user[name]);
+  const value = useSelector((state) => state.users[name]);
   const dispatch = useDispatch();
 
   const handleChange = (evt) => {
