@@ -8,7 +8,7 @@ const initialState = {
     loading: false,
 }
 
-export const userSlice = createSlice({
+const userSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {},

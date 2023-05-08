@@ -13,15 +13,11 @@ function LoginForm() {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    dispatch({
-      type: 'LOGIN',
-    });
+
+
   };
 
   const handleLogout = () => {
-    dispatch({
-      type: 'LOGOUT',
-    });
   };
 
   return (

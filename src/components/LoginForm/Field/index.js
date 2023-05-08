@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // == Import : local
 import './style.scss';
+import { useState } from 'react';
 
 // == Composant
 function Field({
@@ -12,14 +13,11 @@ function Field({
   placeholder,
 }) {
   const value = useSelector((state) => state.users[name]);
-  const dispatch = useDispatch();
+  const [inputValue, setInputValue] = useState('');
 
-  const handleChange = (evt) => {
-    dispatch({
-      type: 'CHANGE_VALUE',
-      value: evt.target.value,
-      key: name,
-    });
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
   };
 
   const inputId = `field-${name}`;
@@ -28,7 +26,7 @@ function Field({
     <div className={value.length > 0 ? 'field field--has-content' : 'field'}>
       <input
         // React - state
-        value={value}
+        value={inputValue}
         onChange={handleChange}
         // infos de base
         id={inputId}
