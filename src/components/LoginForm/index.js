@@ -1,20 +1,28 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import Field from './Field';
-
 import './style.scss';
+import { useState } from 'react';
+import { login } from '../../redux/reducer/userReducer';
 
 function LoginForm() {
   const dispatch = useDispatch();
-
   const isLogged = useSelector((state) => state.users.logged);
   const pseudo = useSelector((state) => state.users.pseudo);
   const loading = useSelector((state) => state.users.loading);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-
-
+    dispatch(login(email, password));
   };
 
   const handleLogout = () => {
@@ -40,17 +48,43 @@ function LoginForm() {
             </div>
           )}
           {!isLogged && (
-
             <form className="login-form-element" onSubmit={handleSubmit}>
-              <Field
-                name="email"
-                placeholder="Adresse Email"
-              />
-              <Field
-                name="password"
-                type="password"
-                placeholder="Mot de passe"
-              />
+              <div className='field'>
+                <input
+                  // React - state
+                  value={email}
+                  onChange={handleEmailChange}
+                  // infos de base
+                  type="email"
+                  className="field-input"
+                  placeholder="Email Adress"
+                  name="email"
+                />
+                <label
+                  htmlFor="field-email"
+                  className="field-label"
+                >
+                  Email Adress
+                </label>
+              </div>
+              <div className='field'>
+                <input
+                  // React - state
+                  value={password}
+                  onChange={handlePasswordChange}
+                  // infos de base
+                  type="password"
+                  className="field-input"
+                  placeholder="Password"
+                  name="password"
+                />
+                <label
+                  htmlFor="field-password"
+                  className="field-label"
+                >
+                  Password
+                </label>
+              </div>              
               <button
                 type="submit"
                 className="login-form-button"
